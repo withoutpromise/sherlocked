@@ -1,13 +1,56 @@
 <!DOCTYPE html>
-<html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>チケット申込ページ</title>
+  <style>
+    body {
+      font-family: "Hiragino Sans", "Helvetica", sans-serif;
+      background-color: #f9fafc;
+      text-align: center;
+      padding-top: 100px;
+    }
+    button {
+      background-color: #007bff;
+      color: white;
+      border: none;
+      padding: 15px 30px;
+      font-size: 18px;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
 <body>
-<form id="redirectForm" action="https://ticket.pia.jp/piasp/rsv/finalproblem/finalproblem25omfcs.jsp" method="POST">
-  <input type="hidden" name="slcd" value="finalproblem25omfcs">
-  <input type="hidden" name="acpt_no" value="j3WFrdK3skMnh11X">
-</form>
+  <h2>チケット申込はこちら</h2>
+  <button id="submitBtn">お申し込みはこちら</button>
 
-<script>
-document.getElementById("redirectForm").submit();
-</script>
+  <script>
+    document.getElementById('submitBtn').addEventListener('click', function() {
+      // 创建一个隐藏的表单并提交
+      const form = document.createElement('form');
+      form.method = 'POST';
+      form.action = 'https://ticket.pia.jp/piasp/rsv/finalproblem/finalproblem25omfcs.jsp';
+
+      const input1 = document.createElement('input');
+      input1.type = 'hidden';
+      input1.name = 'slcd';
+      input1.value = 'finalproblem25omfcs';
+      form.appendChild(input1);
+
+      const input2 = document.createElement('input');
+      input2.type = 'hidden';
+      input2.name = 'acpt_no';
+      input2.value = 'j3WFrdK3skMnh11X';
+      form.appendChild(input2);
+
+      document.body.appendChild(form);
+      form.submit();
+    });
+  </script>
 </body>
 </html>
